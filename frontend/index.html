@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vakeel Saathi — Know Your Rights</title>
+  <meta name="description" content="A legal emergency assistant that helps families understand rights, next steps, and police procedure in plain language." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-glow glow1"></div>
+  <div class="bg-glow glow2"></div>
+  <div class="bg-glow glow3"></div>
+
+  <!-- LANDING PAGE -->
+  <section class="landing-page">
+    <nav class="navbar">
+      <div class="logo">⚖ Vakeel Saathi</div>
+
+      <div class="nav-actions">
+        <button class="lang-btn active" onclick="setLanguage('en')" id="lang-en">English</button>
+        <button class="lang-btn" onclick="setLanguage('hi')" id="lang-hi">हिंदी</button>
+      </div>
+    </nav>
+
+    <div class="landing-content">
+      <div class="landing-text">
+        <p class="mini-badge" id="hero-badge">Legal clarity for the first 24 hours</p>
+
+        <h1 id="hero-title">
+          Understand the situation.<br />
+          <span>Know what happens next.</span>
+        </h1>
+
+        <p class="hero-subtext" id="hero-subtext">
+          A simple legal emergency assistant that helps families understand
+          rights, next steps, and police procedure in plain language.
+        </p>
+
+        <div class="hero-points">
+          <div class="point-card" id="point1">✅ Immediate guidance</div>
+          <div class="point-card" id="point2">✅ Simple language</div>
+          <div class="point-card" id="point3">✅ Situation-based help</div>
+        </div>
+
+        <div class="landing-actions">
+          <button class="main-btn big-btn" onclick="scrollToSection('toolSection')">Start Guidance</button>
+        </div>
+      </div>
+
+      <div class="landing-feature-panel">
+        <div class="feature-panel-card">
+          <h3>Why Vakeel Saathi?</h3>
+          <p>
+            Families often panic when someone is taken by police. We help them understand
+            what rights exist, what police can do, and what steps should be taken immediately.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <div class="feature-box">
+            <span>⚖</span>
+            <h4>Know Rights</h4>
+            <p>Understand the rights of the accused in simple language.</p>
+          </div>
+
+          <div class="feature-box">
+            <span>🤖</span>
+            <h4>AI Assistance</h4>
+            <p>Describe the situation naturally and let AI identify the case.</p>
+          </div>
+
+          <div class="feature-box">
+            <span>📄</span>
+            <h4>Next Steps</h4>
+            <p>See what should be done in the next few hours.</p>
+          </div>
+
+          <div class="feature-box">
+            <span>💬</span>
+            <h4>Legal Chatbot</h4>
+            <p>Ask follow-up questions about the case and get guidance.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOL SECTION -->
+  <section class="hero tool-section" id="toolSection">
+    <div class="section-heading">
+      <h2>Emergency Situation Checker</h2>
+      <p>Use dropdowns or describe your situation in simple language.</p>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-text">
+        <p class="mini-badge">Get legal guidance instantly</p>
+        <h1>
+          Your legal support<br />
+          <span>dashboard starts here.</span>
+        </h1>
+        <p class="hero-subtext">
+          Use the structured form or the AI-powered situation analyzer to get quick,
+          understandable legal guidance.
+        </p>
+      </div>
+
+      <div class="hero-panel">
+        <!-- AI INPUT BOX -->
+        <div class="ai-case-box">
+          <div class="panel-title">Describe Your Situation</div>
+          <p class="panel-subtitle">
+            Type your situation in simple language. 
+          </p>
+
+          <textarea
+            id="caseQuery"
+            class="case-textarea"
+            placeholder="Describe what happened..."
+          ></textarea>
+
+          <button class="main-btn" onclick="analyzeSituation()">Analyze My Situation</button>
+
+          <div id="aiCaseResult" class="ai-case-result"></div>
+        </div>
+
+        <!-- OLD DROPDOWN FLOW -->
+        <div class="panel-title" id="checker-title">Emergency Situation Checker</div>
+        <p class="panel-subtitle" id="checker-subtitle">
+          Answer 2 questions to get legal guidance instantly.
+        </p>
+
+        <div class="form-box">
+          <div class="field">
+            <label for="crime" id="crime-label">Select Offence</label>
+            <select id="crime">
+              <option value="theft">Theft</option>
+              <option value="assault">Assault</option>
+              <option value="cyber_fraud">Cyber Fraud</option>
+              <option value="cheating_fraud">Cheating / Fraud</option>
+              <option value="drug_possession">Drug Possession</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="situation" id="situation-label">Select Situation</label>
+            <select id="situation">
+              <option value="arrested_at_night">Arrested at Night</option>
+              <option value="called_for_questioning">Called for Questioning</option>
+              <option value="police_took_from_home">Police Took From Home</option>
+              <option value="fir_registered">FIR Registered</option>
+            </select>
+          </div>
+
+          <button class="main-btn" onclick="getGuidance()" id="main-btn">Get Legal Guidance</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="dashboard" id="dashboard">
+    <section class="quick-actions" id="quickActions">
+      <div class="quick-card" onclick="scrollToSection('result')">
+        <span class="quick-icon">📞</span>
+        <span class="quick-label" id="quick1">Call Lawyer</span>
+        <span class="quick-sub">Get legal representation</span>
+      </div>
+      <div class="quick-card" onclick="scrollToSection('result')">
+        <span class="quick-icon">📄</span>
+        <span class="quick-label" id="quick2">Bail Process</span>
+        <span class="quick-sub">Understand bail steps</span>
+      </div>
+      <div class="quick-card" onclick="scrollToSection('result')">
+        <span class="quick-icon">⚖</span>
+        <span class="quick-label" id="quick3">Know Rights</span>
+        <span class="quick-sub">Your fundamental rights</span>
+      </div>
+      <div class="quick-card" onclick="scrollToSection('result')">
+        <span class="quick-icon">🚨</span>
+        <span class="quick-label" id="quick4">Emergency Help</span>
+        <span class="quick-sub">Immediate assistance</span>
+      </div>
+    </section>
+
+    <section class="result-header hidden" id="resultHeader">
+      <h2 id="dashboard-title">Case Guidance Dashboard</h2>
+      <p id="dashboard-subtitle">Your situation-specific legal summary appears below.</p>
+    </section>
+
+    <section id="result" class="result-grid"></section>
+
+    <section class="ai-section hidden" id="aiSection">
+      <div class="ai-header">
+        <h2 id="ai-title">AI Case Explanation</h2>
+        <button class="ai-btn" onclick="getAIExplanation()" id="ai-btn">Explain This Case Simply</button>
+      </div>
+      <div class="ai-box" id="aiBox">
+        <p id="ai-placeholder">Click the button to get a simple case explanation.</p>
+      </div>
+    </section>
+
+    <section class="chat-section hidden" id="chatSection">
+      <div class="ai-header">
+        <h2>Ask Vakeel Saathi</h2>
+      </div>
+
+      <div class="chat-box" id="chatBox">
+        <div class="chat-msg bot">Ask a follow-up legal question about this case.</div>
+      </div>
+
+      <div class="chat-input-row">
+        <input
+          type="text"
+          id="chatInput"
+          class="chat-input"
+        />
+        <button class="ai-btn" onclick="sendChatMessage()">Send</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

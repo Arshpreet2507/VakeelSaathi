@@ -1,0 +1,29 @@
+{
+  "theft": {
+    "ipc_section": "379",
+    "bailable": "Yes",
+    "rights": [
+      "Police must present the accused before a magistrate within 24 hours.",
+      "The accused has the right to contact a lawyer.",
+      "The accused has the right to remain silent."
+    ],
+    "next_steps": [
+      "Contact a criminal lawyer immediately.",
+      "Ask for FIR copy.",
+      "Note the time of arrest."
+    ]
+  },
+
+  "assault": {
+    "ipc_section": "351",
+    "bailable": "Depends on severity",
+    "rights": [
+      "Police must inform a family member about the arrest.",
+      "The accused must be produced before a magistrate within 24 hours."
+    ],
+    "next_steps": [
+      "Contact a lawyer immediately.",
+      "Check if FIR has been filed."
+    ]
+  }
+}
